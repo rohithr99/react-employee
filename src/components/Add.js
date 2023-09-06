@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './add.css';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
@@ -10,9 +10,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
+import { registerContext } from '../employeeContext/ContextShare';
 
 
 function Add() {
+
+    //to get context
+    const {registerData, setRegisterData} = useContext(registerContext);
 
     //state to hold the image data
     const [image, setImage] = useState("");
@@ -115,6 +119,10 @@ function Add() {
             console.log(response);
 
             if(response.status === 200){
+
+                //update context
+                setRegisterData(response.data);
+
                 //reset userData
                 setuserData({...userData,    
                 fname: "",

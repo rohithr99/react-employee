@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import ContextShare from './employeeContext/ContextShare';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ContextShare>
     <App />
+    </ContextShare>
     </BrowserRouter>
   </React.StrictMode>
 );
